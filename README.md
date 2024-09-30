@@ -3,6 +3,7 @@
 An easy way to generate <b>SRT subtitles</b> from a <b>video</b> in Windows.
 </p>
 
+![Animation](https://github.com/user-attachments/assets/f19de1ee-11d9-4bbd-b0ca-54a083b66d60)
 
 Powered by [Whisper](https://github.com/openai/whisper) and [ffmpeg](https://ffmpeg.org/)
 
