@@ -42,7 +42,9 @@ cd quick-subtitles
 ```
 pip install -r requirements.txt
 ```
-4. Run main
+4. Download the [latest release of FFmpeg](https://github.com/BtbN/FFmpeg-Builds/releases/tag/latest) (shared version, eg: ffmpeg-master-latest-win64-lgpl-shared.zip)
+5. Extract the FFmpeg zip file and copy the files from the **bin** folder into the repo folder.
+7. Run main
 ```
 main.py --src video.mp4
 ```
