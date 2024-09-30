@@ -40,8 +40,11 @@ def save_to_srt(segments: list, srt_file: str) -> None:
 def format_srt_time(seconds: float) -> str:
     hours = int(seconds // 3600)
     minutes = int((seconds % 3600) // 60)
-    seconds_ms = int((seconds % 60) * 1000)
-    return f"{hours:02}:{minutes:02}:{seconds:02},{seconds_ms:03}"
+    seconds_ms = seconds % 60
+    seconds_int = int(seconds_ms)
+    milliseconds = int((seconds_ms - seconds_int) * 1000)
+
+    return f"{hours:02}:{minutes:02}:{seconds_int:02},{milliseconds:03}"
 
 
 def parse_args():
@@ -52,7 +55,7 @@ def parse_args():
         help="Model to use for transcription (e.g., tiny, base, small, medium, large)",
     )
     parser.add_argument(
-        "--video", required=True, help="Path to the video file to transcribe"
+        "--src", required=True, help="Path to the video file to transcribe"
     )
     parser.add_argument(
         "--language",
@@ -67,7 +70,7 @@ if __name__ == "__main__":
 
     args = parse_args()
 
-    video_file = args.video
+    video_file = args.src
     language = args.language
     srt_file = f"{video_file}.srt"
     model_name = args.model
@@ -102,9 +105,9 @@ if __name__ == "__main__":
     transcript, segments = transcribe_audio(output_audio_file, model, language)
 
     print(f"Saving transcription to: {srt_file}")
-    with tqdm(total=len(segments), desc="Guardando SRT", unit="segmento") as pbar:
+    with tqdm(total=len(segments), desc="Saving SRT", unit="segment") as pbar:
         save_to_srt(segments, srt_file)
-        pbar.update(len(segments))  # Actualizar la barra al completar el guardado
+        pbar.update(len(segments))
 
     print(f"Transcription saved to: {srt_file}")
     print("Done.")
