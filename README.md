@@ -1,4 +1,12 @@
 <h1 align="center">quick-subtitles</h1>
+
+
+<div align="center">
+      <img src="https://img.shields.io/badge/python-3.12.7-blue" />
+      <img src="https://img.shields.io/github/downloads/manucabral/quick-subtitles/total" />
+      <img src="https://img.shields.io/github/license/manucabral/quick-subtitles" />
+</div>
+
 <p align="center">
 An easy way to generate <b>SRT subtitles</b> from a <b>video</b> in Windows.
 </p>
